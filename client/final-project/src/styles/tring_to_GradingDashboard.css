@@ -1,0 +1,114 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    direction: rtl;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8fafc;
+}
+
+.top-bar {
+    padding: 1rem 2rem;
+    background-color: #ffffff;
+    border-bottom: 2px solid #e2e8f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.main-content {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+.left-panel {
+    flex: 1;
+    background-color: #475569;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.right-panel {
+    flex: 1.2; /* נותנים קצת יותר מקום לטבלה */
+    padding: 25px;
+    overflow-y: auto;
+    background-color: #ffffff;
+}
+
+.preview-wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.preview-image {
+    max-width: 100%;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    border-radius: 4px;
+}
+
+.upload-btn {
+    padding: 10px 20px;
+    background-color: #2563eb;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.2s;
+}
+
+.upload-btn:hover {
+    background-color: #1d4ed8;
+}
+
+.generate-btn {
+    padding: 12px 24px;
+    background-color: #059669;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.actions-bar {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #e2e8f0;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.no-file-message {
+    margin-top: 20%;
+    color: #94a3b8;
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+.loader {
+    text-align: center;
+    padding: 50px;
+    color: #2563eb;
+    font-weight: bold;
+}

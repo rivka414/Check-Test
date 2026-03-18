@@ -1,0 +1,106 @@
+/* --- הגדרות בסיס --- */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f8fafc;
+    overflow: hidden;
+}
+
+.logo-container {
+    display: inline-flex;
+    align-items: center;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    gap: 15px;
+    padding: 20px 40px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+/* --- עיצוב האייקון והעמודות --- */
+.icon-wrapper {
+    display: flex;
+    flex-direction: column; /* החץ יהיה מעל המדרגות */
+    align-items: flex-end;
+    margin-right: 5px;
+    position: relative; /* למיקום החץ */
+}
+
+.logo-icon {
+    display: flex;
+    align-items: flex-end;
+    gap: 5px;
+    height: 38px;
+}
+
+.bar {
+    width: 8px;
+    border-radius: 20px;
+    transform-origin: bottom;
+    animation: grow 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+}
+
+@keyframes grow {
+    from { transform: scaleY(0); opacity: 0; }
+    to { transform: scaleY(1); opacity: 1; }
+}
+
+/* העמודות עולות אחרי שהטקסט מסיים (בערך אחרי 1.5 שניות) */
+.red { height: 16px; background-color: #ef5350; animation-delay: 1.5s; }
+.orange { height: 26px; background-color: #ffa726; animation-delay: 1.7s; }
+.green-bar { height: 38px; background-color: #66bb6a; animation-delay: 1.9s; }
+
+/* --- עיצוב החץ האנכי --- */
+.arrow-up {
+    width: 0; 
+    height: 0; 
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 8px solid #43a047; /* ירוק בהיר כמו המילה Check */
+    position: absolute;
+    top: -10px; /* מעל המדרגות */
+    right: -1px; /* מיושר מעל העמודה הירוקה */
+    opacity: 0;
+    transform: translateY(5px);
+    animation: arrowFadeIn 0.5s ease 2.2s forwards; /* מופיע אחרי המדרגות */
+}
+
+@keyframes arrowFadeIn {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- עיצוב הטקסט והאותיות --- */
+.logo-text {
+    font-size: 42px;
+    letter-spacing: -1px;
+    display: flex;
+    gap: 0;
+}
+
+.check-word { color: #43a047; font-weight: 800; display: flex; }
+.test-word { color: #455a64; font-weight: 300; display: flex; margin-left: 4px; }
+
+.char {
+    display: inline-block;
+    opacity: 0;
+    transform: translateX(-10px);
+    animation: fadeInChar 0.4s ease forwards;
+}
+
+@keyframes fadeInChar {
+    to { opacity: 1; transform: translateX(0); }
+}
+
+/* לולאה אוטומטית לעיכוב בין האותיות */
+.char:nth-child(1) { animation-delay: 0.1s; }
+.char:nth-child(2) { animation-delay: 0.2s; }
+.char:nth-child(3) { animation-delay: 0.3s; }
+.char:nth-child(4) { animation-delay: 0.4s; }
+.char:nth-child(5) { animation-delay: 0.5s; }
+.char:nth-child(6) { animation-delay: 0.6s; }
+.char:nth-child(7) { animation-delay: 0.7s; }
+.char:nth-child(8) { animation-delay: 0.8s; }
+.char:nth-child(9) { animation-delay: 0.9s; }

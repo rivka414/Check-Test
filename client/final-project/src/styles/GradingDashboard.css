@@ -1,0 +1,284 @@
+/* GradingDashboard.css */
+
+:root {
+  --primary-green: #e8f5e9;
+  --dark-green: #2e7d32;
+  --accent-orange: #ff9800;
+  --accent-red: #d32f2f;
+  --bg-gradient: linear-gradient(135deg, #f1f8e9 0%, #ffffff 100%);
+  --shadow-soft: 0 8px 30px rgba(0, 0, 0, 0.05);
+  --glass-effect: rgba(255, 255, 255, 0.8);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: var(--bg-gradient);
+  overflow-x: hidden;
+  color: #333;
+}
+
+/* --- רקע אנימטיבי --- */
+.dashboard-container::before,
+.dashboard-container::after {
+  content: "";
+  position: fixed;
+  border-radius: 50%;
+  z-index: -1;
+  filter: blur(60px);
+  opacity: 0.4;
+  animation: float 20s infinite alternate ease-in-out;
+}
+
+.dashboard-container::before {
+  width: 300px; height: 300px;
+  background: var(--primary-green);
+  top: -50px; left: -50px;
+}
+
+.dashboard-container::after {
+  width: 250px; height: 250px;
+  background: #fff3e0;
+  bottom: -50px; right: -50px;
+  animation-delay: -5s;
+}
+
+@keyframes float {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(40px, 60px) scale(1.1); }
+}
+
+/* --- מבנה ראשי --- */
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* --- סרגל עליון מתוקן --- */
+.top-bar {
+  display: flex;
+  justify-content: space-between; /* דוחף את הלוגו והכפתור לקצוות */
+  align-items: center;
+  width: 100%;
+  padding: 10px 25px;
+  background: var(--glass-effect);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  box-shadow: var(--shadow-soft);
+  margin-bottom: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-sizing: border-box;
+      flex-direction: row-reverse;
+}
+
+/* --- לוגו --- */
+.dashboard-logo {
+  display: flex;
+  align-items: center;
+  transform: scale(0.85);
+  transform-origin: left center;
+  cursor: pointer;
+}
+
+.icon-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  position: relative;
+}
+
+.logo-icon {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 28px;
+}
+
+.bar {
+  width: 6px;
+  border-radius: 10px;
+  transform-origin: bottom;
+  animation: grow 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+}
+
+@keyframes grow {
+  from { transform: scaleY(0); opacity: 0; }
+  to { transform: scaleY(1); opacity: 1; }
+}
+
+.red { height: 12px; background-color: var(--accent-red); animation-delay: 1.5s; }
+.orange { height: 20px; background-color: var(--accent-orange); animation-delay: 1.7s; }
+.green-bar { height: 28px; background-color: var(--dark-green); animation-delay: 1.9s; }
+
+.arrow-up {
+  width: 0; height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-bottom: 6px solid var(--dark-green);
+  position: absolute;
+  top: -8px; right: -1px;
+  opacity: 0;
+  transform: translateY(4px);
+  animation: arrowFadeIn 0.5s ease 2.2s forwards;
+}
+
+@keyframes arrowFadeIn { to { opacity: 1; transform: translateY(0); } }
+
+.logo-text {
+  font-size: 30px;
+  letter-spacing: -1px;
+  display: flex;
+  line-height: 1;
+  margin-left: 10px;
+}
+
+.check-word { color: var(--dark-green); font-weight: 800; display: flex; }
+.test-word { color: #546e7a; font-weight: 300; display: flex; margin-left: 3px; }
+
+.char {
+  display: inline-block;
+  opacity: 0;
+  transform: translateX(-10px);
+  animation: fadeInChar 0.4s ease forwards;
+}
+
+@keyframes fadeInChar { to { opacity: 1; transform: translateX(0); } }
+
+/* דיליי לאותיות */
+.char:nth-child(1) { animation-delay: 0.1s; }
+.char:nth-child(2) { animation-delay: 0.2s; }
+.char:nth-child(3) { animation-delay: 0.3s; }
+.char:nth-child(4) { animation-delay: 0.4s; }
+.char:nth-child(5) { animation-delay: 0.5s; }
+.char:nth-child(6) { animation-delay: 0.6s; }
+.char:nth-child(7) { animation-delay: 0.7s; }
+.char:nth-child(8) { animation-delay: 0.8s; }
+.char:nth-child(9) { animation-delay: 0.9s; }
+
+/* --- כפתור העלאה --- */
+.upload-btn {
+  background-color: var(--dark-green);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  white-space: nowrap; /* מונע מהטקסט לרדת שורה */
+}
+
+.upload-btn:hover {
+  background-color: #1b5e20;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(46, 125, 50, 0.2);
+}
+
+/* --- תוכן מרכזי --- */
+.main-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  flex: 1;
+  overflow: hidden;
+}
+
+.left-panel {
+  background: var(--glass-effect);
+  border-radius: 20px;
+  padding: 15px;
+  box-shadow: var(--shadow-soft);
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.preview-wrapper {
+  flex: 1;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 2px dashed #c8e6c9;
+}
+
+.preview-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.right-panel {
+  background: white;
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: var(--shadow-soft);
+  overflow-y: auto;
+}
+
+.section-title {
+  color: var(--dark-green);
+  border-right: 4px solid var(--accent-orange);
+  padding-right: 12px;
+  margin-bottom: 20px;
+}
+
+/* --- סיכום --- */
+.output-summary-bar {
+  margin-top: 30px;
+  padding: 20px;
+  background: var(--primary-green);
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.final-score-badge {
+  background: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  color: var(--accent-red);
+  font-size: 1.1rem;
+  border: 1px solid #ffcdd2;
+}
+
+.generate-btn {
+  background: linear-gradient(to left, var(--accent-orange), #ffb74d);
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.generate-btn:hover { transform: scale(1.05); }
+
+/* --- לואדר --- */
+.loader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.spinner {
+  width: 50px; height: 50px;
+  border: 5px solid var(--primary-green);
+  border-top: 5px solid var(--accent-orange);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 15px;
+}
+
+@keyframes spin { 100% { transform: rotate(360deg); } }
+
+.no-file-message {
+  text-align: center;
+  margin-top: 20%;
+  color: #888;
+}

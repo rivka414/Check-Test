@@ -1,0 +1,256 @@
+:root {
+  --primary-green: #e8f5e9;
+  --dark-green: #2e7d32;
+  --accent-orange: #ff9800;
+  --bg-gradient: linear-gradient(135deg, #f9fbf7 0%, #ffffff 100%);
+  --shadow-soft: 0 10px 40px rgba(0, 0, 0, 0.06);
+  
+  /* צבעי הלוגו */
+  --logo-red: #ef5350;
+  --logo-orange: #ffa726;
+  --logo-green-bar: #66bb6a;
+  --logo-text-check: #43a047;
+  --logo-text-test: #455a64;
+}
+
+/* --- רקע ואנימציית עיגולים --- */
+.setup-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 20px 40px; /* הוספת padding עליון כדי לפנות מקום ללוגו */
+  background: var(--bg-gradient);
+  position: relative;
+  overflow: hidden;
+}
+
+/* ... (שאר קוד ה-before/after ו-floatCircles נשאר ללא שינוי) ... */
+.setup-container::before,
+.setup-container::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  z-index: 0;
+  filter: blur(80px);
+  opacity: 0.3;
+  animation: floatCircles 25s infinite alternate ease-in-out;
+}
+
+.setup-container::before {
+  width: 400px;
+  height: 400px;
+  background: var(--primary-green);
+  top: -100px;
+  right: -100px;
+}
+
+.setup-container::after {
+  width: 350px;
+  height: 350px;
+  background: #fff3e0; 
+  bottom: -100px;
+  left: -100px;
+  animation-delay: -7s;
+}
+
+@keyframes floatCircles {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  100% { transform: translate(-50px, 80px) rotate(15deg); }
+}
+
+/* --- מיקום ועיצוב הלוגו בפינה --- */
+.main-logo-wrapper {
+  position: absolute; /* מיקום מוחלט ביחס לקונטיינר */
+  top: 20px;
+  left: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 10; /* מוודא שהלוגו מעל הכל */
+  user-select: none;
+}
+
+/* --- עיצוב האייקון, החץ והעמודות --- */
+.icon-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  position: relative;
+}
+
+.logo-icon {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 24px; /* גודל קטן יותר עבור הפינה */
+}
+
+.bar {
+  width: 5px; /* דק יותר */
+  border-radius: 10px;
+  transform-origin: bottom;
+  animation: grow 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+}
+
+@keyframes grow {
+  from { transform: scaleY(0); opacity: 0; }
+  to { transform: scaleY(1); opacity: 1; }
+}
+
+.red { height: 10px; background-color: var(--logo-red); animation-delay: 1.5s; }
+.orange { height: 16px; background-color: var(--logo-orange); animation-delay: 1.7s; }
+.green-bar { height: 24px; background-color: var(--logo-green-bar); animation-delay: 1.9s; }
+
+.arrow-up {
+  width: 0; 
+  height: 0; 
+  border-left: 3px solid transparent; /* קטן יותר */
+  border-right: 3px solid transparent;
+  border-bottom: 5px solid var(--logo-text-check);
+  position: absolute;
+  top: -7px;
+  right: -1px;
+  opacity: 0;
+  transform: translateY(3px);
+  animation: arrowFadeIn 0.5s ease 2.2s forwards;
+}
+
+@keyframes arrowFadeIn {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- עיצוב הטקסט והאותיות --- */
+.logo-text {
+  font-size: 26px; /* גודל קטן יותר לפינה */
+  letter-spacing: -0.8px;
+  display: flex;
+  gap: 0;
+  line-height: 1;
+}
+
+.check-word { color: var(--logo-text-check); font-weight: 800; display: flex; }
+.test-word { color: var(--logo-text-test); font-weight: 300; display: flex; margin-left: 3px; }
+
+.char {
+  display: inline-block;
+  opacity: 0;
+  transform: translateX(-5px); /* כניסה עדינה יותר */
+  animation: fadeInChar 0.4s ease forwards;
+}
+
+@keyframes fadeInChar {
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* לולאה אוטומטית לעיכוב בין האותיות */
+.char:nth-child(1) { animation-delay: 0.1s; }
+.char:nth-child(2) { animation-delay: 0.2s; }
+.char:nth-child(3) { animation-delay: 0.3s; }
+.char:nth-child(4) { animation-delay: 0.4s; }
+.char:nth-child(5) { animation-delay: 0.5s; }
+.char:nth-child(6) { animation-delay: 0.6s; }
+.char:nth-child(7) { animation-delay: 0.7s; }
+.char:nth-child(8) { animation-delay: 0.8s; }
+.char:nth-child(9) { animation-delay: 0.9s; }
+
+/* --- כרטיס המרכזי ורכיבי ה-Setup --- */
+.setup-title {
+  font-size: 2rem;
+  color: var(--dark-green);
+  margin-bottom: 40px;
+  position: relative;
+  z-index: 1;
+  font-weight: 700;
+  margin-top: 0; /* איפוס margin עליון */
+}
+
+/* ... (שאר קוד ה-CSS של upload-section, file-input, lock-button נשאר ללא שינוי) ... */
+.upload-section {
+  background: white;
+  width: 100%;
+  max-width: 500px;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: var(--shadow-soft);
+  margin-bottom: 25px;
+  border: 1px solid rgba(200, 230, 201, 0.5);
+  transition: transform 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.upload-section:hover {
+  transform: translateY(-5px);
+  border-color: var(--dark-green);
+}
+
+.upload-label {
+  display: block;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.helper-text {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 15px;
+  line-height: 1.4;
+}
+
+.file-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background: #fafafa;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.file-name {
+  margin-top: 12px;
+  font-size: 0.85rem;
+  color: var(--dark-green);
+  background: #f1f8e9;
+  padding: 6px 12px;
+  border-radius: 6px;
+  display: inline-block;
+  font-weight: 500;
+}
+
+.lock-button {
+  width: 100%;
+  max-width: 500px;
+  padding: 18px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: white;
+  background: linear-gradient(135deg, var(--accent-orange) 0%, #f57c00 100%);
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(255, 152, 0, 0.3);
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
+  margin-top: 15px;
+}
+
+.lock-button:hover:not(:disabled) {
+  transform: scale(1.02);
+  box-shadow: 0 8px 25px rgba(255, 152, 0, 0.4);
+}
+
+.lock-button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.lock-button:active {
+  transform: scale(0.98);
+}
