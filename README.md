@@ -18,7 +18,7 @@
 
 * **Frontend:** `React` עם `TypeScript` ו-`Vite` לממשק מהיר וידידותי.
 * **Backend:** `FastAPI` (Python) - שרת אסינכרוני לביצועים גבוהים.
-* **AI Models:** * **Google Gemini 1.5 Flash:** משמש כ"בודק" - מבצע OCR לכתב היד ומנתח לוגית את התשובה מול המקור.
+* **AI Models:** * **Google Gemini 2.5 Flash:** משמש כ"בודק" - מבצע OCR לכתב היד ומנתח לוגית את התשובה מול המקור.
     * **Cohere Multilingual V3:** משמש ל-`Embeddings` - הבנת הקשרים סמנטיים עמוקים בשפה העברית.
 * **Vector Database:** `Pinecone` - לניהול ושליפה מהירה של אלפי פסקי מידע מהסילבוס.
 * **Framework:** `LlamaIndex` - לניהול ה-Data Pipeline וה-Workflows המורכבים.
